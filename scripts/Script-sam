@@ -1,0 +1,83 @@
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/airlines2.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-air.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/covtype.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-covtype.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/elec.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-elec.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/elecNormNew.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-elecnew.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/interchangingRBF.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-inter.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/LED_Drift.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-led.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/MG_2C_2D.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-mg.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/moving_squares.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-moving.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/poker.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-poker.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/rotatingHyperplane.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-rotate.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/SEA-Abrupt13123-391-525-353.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-SEA-Abrupt13123.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/SEA-Abrupt-01210-289-766-455.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-SEA-Abrupt-01210.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/SEA-Incremental-01210-963-936-704.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-SEA-Incremental-01210.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/SEA-Incremental-13123-256-288-961.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-SEA-Incremental-13123.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Waveform.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-wave.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/weather.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-weather.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/connect-4.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-connect.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Mixed-1212-205080-10100010.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-Mixed.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Agrawal-4657-50010500-205080.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-Agrawal.csv
+
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Sine-1423-205080-100010100.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-Sine.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/STAGER-13213-205080-1050010.arff)" -l "(moa.classifiers.lazy.SAMkNN)" -i 1000000 -f 1000 -d reports/sam/sam-STAGER.csv
+

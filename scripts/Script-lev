@@ -1,0 +1,81 @@
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/airlines2.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-air.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/covtype.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-covtype.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/elec.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-elec.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/elecNormNew.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-elecnew.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/interchangingRBF.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-inter.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/LED_Drift.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-led.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/MG_2C_2D.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-mg.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/moving_squares.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-moving.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/poker.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-poker.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/rotatingHyperplane.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-rotate.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/SEA-Abrupt13123-391-525-353.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-SEA-Abrupt13123.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/SEA-Abrupt-01210-289-766-455.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-SEA-Abrupt-01210.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/SEA-Incremental-01210-963-936-704.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-SEA-Incremental-01210.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/SEA-Incremental-13123-256-288-961.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-SEA-Incremental-13123.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Waveform.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-wave.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/weather.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-weather.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/connect-4.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-connect.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Mixed-1212-205080-10100010.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-Mixed.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Agrawal-4657-50010500-205080.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-Agrawal.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Sine-1423-205080-100010100.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-Sine.csv
+
+___________________________________________________________________________________________________
+
+java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/STAGER-13213-205080-1050010.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-STAGER.csv
