@@ -1,5 +1,4 @@
 
-java -Xms8g -Xmx128g -XX:ParallelGCThreads=12 -javaagent:sizeofag-1.0.4.jar -cp target/imbalanced-streams-1.0-jar-with-dependencies.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/airlines2.arff)" -l "(moa.classifiers.meta.KUE)" -i 1000000 -f 1000 -d reports/kue/kue-air.csv
 
 ___________________________________________________________________________________________________
 
@@ -11,7 +10,6 @@ java -Xms8g -Xmx128g -XX:ParallelGCThreads=12 -javaagent:sizeofag-1.0.4.jar -cp 
 
 ___________________________________________________________________________________________________
 
-java -Xms8g -Xmx128g -XX:ParallelGCThreads=12 -javaagent:sizeofag-1.0.4.jar -cp target/imbalanced-streams-1.0-jar-with-dependencies.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/elecNormNew.arff)" -l "(moa.classifiers.meta.KUE)" -i 1000000 -f 1000 -d reports/kue/kue-elecnew.csv
 
 ___________________________________________________________________________________________________
 
@@ -55,7 +53,6 @@ java -Xms8g -Xmx128g -XX:ParallelGCThreads=12 -javaagent:sizeofag-1.0.4.jar -cp 
 
 ___________________________________________________________________________________________________
 
-java -Xms8g -Xmx128g -XX:ParallelGCThreads=12 -javaagent:sizeofag-1.0.4.jar -cp target/imbalanced-streams-1.0-jar-with-dependencies.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Waveform.arff)" -l "(moa.classifiers.meta.KUE)" -i 1000000 -f 1000 -d reports/kue/kue-wave.csv
 
 ___________________________________________________________________________________________________
 
@@ -63,7 +60,6 @@ java -Xms8g -Xmx128g -XX:ParallelGCThreads=12 -javaagent:sizeofag-1.0.4.jar -cp 
 
 ___________________________________________________________________________________________________
 
-java -Xms8g -Xmx128g -XX:ParallelGCThreads=12 -javaagent:sizeofag-1.0.4.jar -cp target/imbalanced-streams-1.0-jar-with-dependencies.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/connect-4.arff)" -l "(moa.classifiers.meta.KUE)" -i 1000000 -f 1000 -d reports/kue/kue-connect.csv
 
 ___________________________________________________________________________________________________
 
@@ -75,8 +71,3 @@ java -Xms8g -Xmx128g -XX:ParallelGCThreads=12 -javaagent:sizeofag-1.0.4.jar -cp 
 
 ___________________________________________________________________________________________________
 
-java -Xms8g -Xmx128g -XX:ParallelGCThreads=12 -javaagent:sizeofag-1.0.4.jar -cp target/imbalanced-streams-1.0-jar-with-dependencies.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Sine-1423-205080-100010100.arff)" -l "(moa.classifiers.meta.KUE)" -i 1000000 -f 1000 -d reports/kue/kue-Sine.csv
-
-___________________________________________________________________________________________________
-
-java -Xms8g -Xmx128g -XX:ParallelGCThreads=12 -javaagent:sizeofag-1.0.4.jar -cp target/imbalanced-streams-1.0-jar-with-dependencies.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/STAGER-13213-205080-1050010.arff)" -l "(moa.classifiers.meta.KUE)" -i 1000000 -f 1000 -d reports/kue/kue-STAGER.csv
