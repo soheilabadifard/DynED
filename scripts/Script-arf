@@ -1,4 +1,4 @@
-java -javaagent:sizeofag-1.0.4.jar -cp moa.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/airlines2.arff)" -l "(moa.classifiers.meta.AdaptiveRandomForest)" -i 1000000 -f 1000 -d reports/arf/arf-air.csv
+
 
 ___________________________________________________________________________________________________
 
@@ -9,8 +9,6 @@ ________________________________________________________________________________
 java -javaagent:sizeofag-1.0.4.jar -cp moa.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/elec.arff)" -l "(moa.classifiers.meta.AdaptiveRandomForest)" -i 1000000 -f 1000 -d reports/arf/arf-elec.csv
 
 ___________________________________________________________________________________________________
-
-java -javaagent:sizeofag-1.0.4.jar -cp moa.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/elecNormNew.arff)" -l "(moa.classifiers.meta.AdaptiveRandomForest)" -i 1000000 -f 1000 -d reports/arf/arf-elecnew.csv
 
 ___________________________________________________________________________________________________
 
@@ -54,15 +52,11 @@ java -javaagent:sizeofag-1.0.4.jar -cp moa.jar moa.DoTask EvaluateInterleavedTes
 
 ___________________________________________________________________________________________________
 
-java -javaagent:sizeofag-1.0.4.jar -cp moa.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Waveform.arff)" -l "(moa.classifiers.meta.AdaptiveRandomForest)" -i 1000000 -f 1000 -d reports/arf/arf-wave.csv
-
 ___________________________________________________________________________________________________
 
 java -javaagent:sizeofag-1.0.4.jar -cp moa.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/weather.arff)" -l "(moa.classifiers.meta.AdaptiveRandomForest)" -i 1000000 -f 1000 -d reports/arf/arf-weather.csv
 
 ___________________________________________________________________________________________________
-
-java -javaagent:sizeofag-1.0.4.jar -cp moa.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/connect-4.arff)" -l "(moa.classifiers.meta.AdaptiveRandomForest)" -i 1000000 -f 1000 -d reports/arf/arf-connect.csv
 
 ___________________________________________________________________________________________________
 
@@ -74,8 +68,3 @@ java -javaagent:sizeofag-1.0.4.jar -cp moa.jar moa.DoTask EvaluateInterleavedTes
 
 ___________________________________________________________________________________________________
 
-java -javaagent:sizeofag-1.0.4.jar -cp moa.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Sine-1423-205080-100010100.arff)" -l "(moa.classifiers.meta.AdaptiveRandomForest)" -i 1000000 -f 1000 -d reports/arf/arf-Sine.csv
-
-___________________________________________________________________________________________________
-
-java -javaagent:sizeofag-1.0.4.jar -cp moa.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/STAGER-13213-205080-1050010.arff)" -l "(moa.classifiers.meta.AdaptiveRandomForest)" -i 1000000 -f 1000 -d reports/arf/arf-STAGER.csv
