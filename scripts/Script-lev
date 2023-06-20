@@ -1,4 +1,4 @@
-java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/airlines2.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-air.csv
+
 
 ___________________________________________________________________________________________________
 
@@ -10,7 +10,6 @@ java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInt
 
 ___________________________________________________________________________________________________
 
-java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/elecNormNew.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-elecnew.csv
 
 ___________________________________________________________________________________________________
 
@@ -54,7 +53,6 @@ java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInt
 
 ___________________________________________________________________________________________________
 
-java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Waveform.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-wave.csv
 
 ___________________________________________________________________________________________________
 
@@ -62,7 +60,6 @@ java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInt
 
 ___________________________________________________________________________________________________
 
-java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/connect-4.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-connect.csv
 
 ___________________________________________________________________________________________________
 
@@ -74,8 +71,3 @@ java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInt
 
 ___________________________________________________________________________________________________
 
-java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/Sine-1423-205080-100010100.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-Sine.csv
-
-___________________________________________________________________________________________________
-
-java -javaagent:sizeofag-1.0.0.jar -cp moa-KUE-201804.jar moa.DoTask EvaluateInterleavedTestThenTrain -e "(BasicClassificationPerformanceEvaluator)" -s "(ArffFileStream -f arff/STAGER-13213-205080-1050010.arff)" -l "(moa.classifiers.meta.LeveragingBag)" -i 1000000 -f 1000 -d reports/lev/lev-STAGER.csv
