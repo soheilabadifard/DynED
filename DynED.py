@@ -178,7 +178,6 @@ def majority_voting(classifiers, test_data_x, test_data_y):
     Returns:
     A list of predicted labels for the test dataset.
     """
-
     predictions = [clf.predict(test_data_x, test_data_y) for clf in classifiers]
     candidate = -1
     votes = 0
@@ -208,17 +207,17 @@ def read_data(pth):
         cat_cols = [col for col in data.columns if data[col].dtype == "O"]
         if cat_cols:
             data[cat_cols] = data[cat_cols].apply(lambda x: x.str.decode('utf8'))
-            # find uniq values of each categorical column
+            # find unique values of each categorical column
             uniq_vals = [data[col].unique() for col in cat_cols]
             # assign a number to each unique value of each categorical column
             for i in range(len(cat_cols)):
                 data[cat_cols[i]] = data[cat_cols[i]].apply(lambda x: np.where(uniq_vals[i] == x)[0][0])
 
-        # change the dtype of last column of dataframe to int
+        # change the dtype of the last column of the data frame to int
         data.iloc[:, -1] = data.iloc[:, -1].astype(int)
     else:
-    	print("please provide .arff type")
-    	return -1
+        print("please provide .arff type")
+        return -1
     return data
 
 
@@ -234,12 +233,12 @@ def window_average(dx, n):
     w_avg = []
     if len(dx) < high_index:
         return [sum(dx) / len(dx)]
-    else:
-        while high_index < len(dx):
-            w_avg.append(sum(dx[low_index:high_index]) / n)
-            low_index += n
-            high_index += n
-        return w_avg
+        
+    while high_index < len(dx):
+        w_avg.append(sum(dx[low_index:high_index]) / n)
+        low_index += n
+        high_index += n
+    return w_avg
 
 
 def initialize_classifier(num_clss, prd_lst_thr, cnt):
@@ -522,22 +521,16 @@ def main(fpth, diversity_type):
                                                                      clustr=cluster1,
                                                                      measure_type=diversity_type)
     mmr_score_selected.append(mm_score)
-
-
     pbar = tqdm(total=len(df) - (initial_sample_train * 5))
     aux_cnt = 0
     while stream.has_more_samples():
         x, y = stream.next_sample()
         window.append(x, y)
-
         y_predict = majority_voting(selected_classifier_list, x, y)
-
         stream_true = stream_true + check_true(y, y_predict)
         stream_acc.append(stream_true / (cnt + 1))
         stream_record.append(check_true(y, y_predict))
-
         drifter1.add_element(check_true(y, y_predict))
-
         for k in selected_classifier_list:
             k.partial_fit(x, y, classes=stream.target_values)
 
@@ -551,7 +544,7 @@ def main(fpth, diversity_type):
                                                to_add=cls_add_eachstep,
                                                classes=stream.target_values)
             flg = True
-        if aux_cnt == 100 and len(classifier_list) != 0 or flg:  #
+        if aux_cnt == 100 and len(classifier_list) != 0 or flg:
 
             if len(stream_acc) > 100 and (stream_acc[-1] - stream_acc[-100]) != 0:
                 iaf = (stream_acc[-1] - stream_acc[-100]) / 100
@@ -580,16 +573,11 @@ def main(fpth, diversity_type):
     ddd_acc2 = window_average(stream_record, 1000)
     final_accuracy = f"Name: {fpth}, Overall Mean Accuracy: {np.mean(ddd_acc2)}"
     print(final_accuracy)
-
-    
     a = len(df) // 30
     ddd_acc2 = window_average(stream_record, a)
-
     x = np.linspace(0, len(df), len(ddd_acc2), endpoint=True)
-
     f = plt.figure()
     plt.plot(x, ddd_acc2, 'r', label='DynED', marker="*")
-
     plt.xlabel('Percentage of data', fontsize=10)
     plt.ylabel('Accuracy', fontsize=10)
     plt.grid(True)
@@ -597,10 +585,9 @@ def main(fpth, diversity_type):
     plt.show()
     plt.close()
 
-
 if __name__ == "__main__":
     dataset = "Put the full address and name of the dataset here"
     measure = "double_fault"
 
     main(dataset, measure)
-
+    
