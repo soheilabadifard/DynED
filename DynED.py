@@ -201,7 +201,7 @@ def read_data(pth):
     splt = pth.split('.')
     root = pth
     if splt[-1] == 'arff':
-        data = arff.loadarff(root + splt[0] + '.arff')
+        data = arff.loadarff(root)
         data = pd.DataFrame(data[0])
         data = data.dropna()
         cat_cols = [col for col in data.columns if data[col].dtype == "O"]
