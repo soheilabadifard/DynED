@@ -7,7 +7,7 @@ from sklearn.utils._testing import ignore_warnings
 from sklearn.exceptions import ConvergenceWarning, DataConversionWarning
 from itertools import combinations
 from scipy.io import arff
-# import matplotlib.pyplot as plt
+
 import numpy as np
 import pandas as pd
 import time
@@ -37,7 +37,7 @@ class DataWindow:
             self.window_features.pop(0)
             self.window_label.pop(0)
 
-        for key, value in self.class_based_window.items():
+        for _, value in self.class_based_window.items():
             while len(value) > self.window_size:
                 value.pop(0)
 
@@ -359,12 +359,12 @@ def mmr(len_classifiers, diversity_matrix, accuracy_scores, lmd, to_select):
             score += max(accuracy_scores)
         else:
             classifier_index = [i for i in range(len_classifiers) if i not in s]
-            mmr = []
+            mmr_list = []
             for i in classifier_index:
                 auxi = [diversity_matrix[i, j] for j in s]
-                mmr.append([i, lmd * accuracy_scores[i] - (1 - lmd) * max(auxi)])
-            s.append(max(mmr, key=lambda i: i[1])[0])
-            score += max(mmr, key=lambda i: i[1])[1]
+                mmr_list.append([i, lmd * accuracy_scores[i] - (1 - lmd) * max(auxi)])
+            s.append(max(mmr_list, key=lambda i: i[1])[0])
+            score += max(mmr_list, key=lambda i: i[1])[1]
         if len(s) == len_classifiers:
             break
     return s, score
@@ -576,7 +576,7 @@ def main(fpth, diversity_type):
     a = len(df) // 30
     ddd_acc2 = window_average(stream_record, a)
     x = np.linspace(0, len(df), len(ddd_acc2), endpoint=True)
-    f = plt.figure()
+    plt.figure()
     plt.plot(x, ddd_acc2, 'r', label='DynED', marker="*")
     plt.xlabel('Percentage of data', fontsize=10)
     plt.ylabel('Accuracy', fontsize=10)
