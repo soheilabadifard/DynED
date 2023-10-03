@@ -23,8 +23,34 @@ num_cpus = os.cpu_count()
 print(f"Number of CPUs: {num_cpus}")
 
 
-# Data window class
 class DataWindow:
+    """
+    A class used to represent a Data Window.
+
+    ...
+
+    Attributes
+    ----------
+    window_features : list
+        a list of features in the window
+    window_label : list
+        a list of labels corresponding to the features in the window
+    window_size : int
+        the size of the window
+    class_based_window : dict
+        a dictionary where each key is a class, and each value is a list of features belonging to that class
+
+    Methods
+    -------
+    append(features, label):
+        Appends features and their corresponding label to the window.
+    get_data(n):
+        Returns the last 'n' features and their corresponding labels from the window.
+    balanced_data(n):
+        Returns a balanced dataset with 'n' instances.
+    get_window_len():
+        Returns the current length of the window.
+    """
 
     def __init__(self, value_of_classes, win_size=1000):
         self.window_features = []
@@ -79,9 +105,63 @@ class DataWindow:
         return len(self.window_label)
 
 
-# Classifier Class
-
 class Classifier(HoeffdingTreeClassifier):
+    """
+    A subclass of HoeffdingTreeClassifier is used for classification tasks.
+
+    ...
+
+    Attributes
+    ----------
+    aux_accuracy : float
+        auxiliary accuracy of the classifier
+    y_prediction : array-like
+        the prediction made by the classifier
+    counter: int
+        a counter for the number of predictions made
+    accuracy: float
+        the accuracy of the classifier
+    true_predicted : int
+        the number of true predictions made by the classifier
+    num_of_class : int
+        the number of classes in the classification task
+    prediction_list : list
+        a list of predictions made by the classifier
+    prediction_list_threshold : list
+        a list of thresholds for the predictions made by the classifier
+    tm: float
+        a timestamp indicating when the classifier was initialized
+
+    Methods
+    -------
+    predict(dx, dy=None):
+        Makes a prediction based on the input features and updates the accuracy.
+    aux_predict(dx, dy):
+        Makes an auxiliary prediction and updates the auxiliary accuracy.
+    calc_accuracy(dy):
+        Calculates and updates the accuracy of the classifier.
+    get_accuracy():
+        Returns the current accuracy of the classifier.
+    get_aux_accuracy():
+        Returns the current auxiliary accuracy of the classifier.
+    get_total_prediction():
+        Returns all predictions made by the classifier.
+    get_count():
+        Returns the total number of predictions made by the classifier.
+    get_age():
+        Returns the timestamp indicating when the classifier was initialized.
+    get_aux_state():
+        Returns a tuple containing the list of predictions and auxiliary accuracy.
+    set_aux_state(state):
+        Sets the list of predictions and auxiliary accuracy based on a given state.
+    get_state():
+        Returns a tuple containing counter, accuracy, true_predicted, and y_prediction.
+    set_state(state):
+        Sets counter, accuracy, true_predicted, and y_prediction based on a given state.
+    get_weight():
+        Returns weight which is calculated as true_predicted divided by counter.
+        
+    """
 
     def __init__(self, num_of_class, lst_thr):
         super().__init__(split_confidence=0.9, grace_period=50)
@@ -197,6 +277,21 @@ def majority_voting(classifiers, test_data_x, test_data_y):
 # Data read
 
 def read_data(pth):
+    """
+    Reads data from an arff file and returns it as a pandas DataFrame.
+
+    Parameters
+    ----------
+    path: str
+        The path to the .arff file.
+
+    Returns
+    -------
+    data: DataFrame or int
+        A pandas Frame containing the data from the .arff file. If the file is not of type .arff, 
+        the function prints a message and returns -1.
+
+    """
     data = None
     splt = pth.split('.')
     root = pth
@@ -223,11 +318,42 @@ def read_data(pth):
 
 # prediction Validation
 def check_true(dy, y_hat):
+    """
+    Check if the predicted label matches the true label.
+
+    Parameters
+    ----------
+    dy: int
+        The true label.
+    y_hat : int
+        The predicted label.
+
+    Returns
+    -------
+    int
+        Returns 1 if the predicted label matches the true label; otherwise, returns 0.
+    """
     return 1 if (dy == y_hat) else 0
 
 
 # Window Average Function
 def window_average(dx, n):
+    """
+    Calculates the moving average over a window of size 'n' for a given list.
+
+    Parameters
+    ----------
+    dx: list
+        The list for which the moving average is to be calculated.
+    n: int
+        The size of the window for the moving average.
+
+    Returns
+    -------
+    w_avg : list
+        A list of the moving averages. If the length of 'dx' is less than 'n', 
+        it returns a list with a single element being the average of 'dx'.
+    """
     low_index = 0
     high_index = low_index + n
     w_avg = []
@@ -242,12 +368,50 @@ def window_average(dx, n):
 
 
 def initialize_classifier(num_clss, prd_lst_thr, cnt):
+    """
+    Initializes a list of Classifier objects.
+
+    Parameters
+    ----------
+    num_clss : int
+        The number of classes for the classification task.
+    prd_lst_thr : list
+        A list of thresholds for the predictions made by the classifier.
+    cnt: int
+        The number of Classifier objects to be created.
+
+    Returns
+    -------
+    cls_list : list
+        A list of Classifier objects.
+    """
     cls_list = []
     cls_list.extend(Classifier(num_clss, prd_lst_thr) for _ in range(cnt))
     return cls_list
 
 
 def pre_train_classifier(cls_names, dx, dy, cls_lst, sample_train_size):
+    """
+    Pre-trains a list of Classifier objects.
+
+    Parameters
+    ----------
+    cls_names : list
+        The list of class names for the classification task.
+    dx: array-like
+        The input features for training.
+    dy: array-like
+        The true labels for training.
+    cls_lst : list
+        The list of Classifier objects to be pre-trained.
+    sample_train_size : int
+        The size of the training sample for each classifier.
+
+    Returns
+    -------
+    cls: list
+        The list of pre-trained Classifier objects.
+    """
     cls = cls_lst
     for aux, classifier in enumerate(cls):
         classifier.partial_fit(dx[aux * sample_train_size:, :], dy[aux * sample_train_size:, 0],
@@ -258,6 +422,21 @@ def pre_train_classifier(cls_names, dx, dy, cls_lst, sample_train_size):
 
 # Q statistics
 def q_measure_updated(predict_queue, lng=None):
+    """
+    Calculates the Q-measure for a given queue of predictions.
+
+    Parameters
+    ----------
+    predict_queue : list
+        The list of predictions for which the Q-measure is to be calculated.
+    lng: int, optional
+        The length of the shortest prediction in the queue. If not provided, it is calculated.
+
+    Returns
+    -------
+    q_matrix : ndarray
+        A square matrix where each element (i, j) is the Q-measure between the i-th and j-th prediction in the queue.
+    """
     min_length = lng if bool(lng) else len(min(predict_queue, key=len))
     q_matrix = np.zeros((len(predict_queue), len(predict_queue)), dtype=float)
 
@@ -276,7 +455,21 @@ def q_measure_updated(predict_queue, lng=None):
 
 
 def kappa_metric(predict_queue, lng=None):
-    # calculate Cohen's kappa between classifiers
+    """
+    Calculates the Cohen's kappa metric for a given queue of predictions.
+
+    Parameters
+    ----------
+    predict_queue : list
+        The list of predictions for which the kappa metric is to be calculated.
+    lng : int, optional
+        The length of the shortest prediction in the queue. If not provided, it is calculated.
+
+    Returns
+    -------
+    kappa_matrix : ndarray
+        A square matrix where each element (i, j) is the kappa metric between the i-th and j-th prediction in the queue.
+    """
     min_length = lng if bool(lng) else len(min(predict_queue, key=len))
     kappa_matrix = np.zeros((len(predict_queue), len(predict_queue)), dtype=float)
 
@@ -300,6 +493,21 @@ def kappa_metric(predict_queue, lng=None):
 
 
 def disagreement_measure(predict_queue, lng=None):
+    """
+    Calculates the disagreement measure for a given queue of predictions.
+
+    Parameters
+    ----------
+    predict_queue : list
+        The list of predictions for which the disagreement measure is to be calculated.
+    lng: int, optional
+        The length of the shortest prediction in the queue. If not provided, it is calculated.
+
+    Returns
+    -------
+    disagreement: ndarray
+        A square matrix where each element (i, j) is the disagreement measure between the i-th and j-th prediction in the queue.
+    """
     min_length = lng if bool(lng) else len(min(predict_queue, key=len))
     disagreement = np.zeros((len(predict_queue), len(predict_queue)), dtype=float)
 
@@ -316,6 +524,21 @@ def disagreement_measure(predict_queue, lng=None):
 
 
 def correlation_coefficient(predict_queue, lng=None):
+    """
+    Calculates the correlation coefficient for a given queue of predictions.
+
+    Parameters
+    ----------
+    predict_queue : list
+        The list of predictions for which the correlation coefficient is to be calculated.
+    lng: int, optional
+        The length of the shortest prediction in the queue. If not provided, it is calculated.
+
+    Returns
+    -------
+    correlation: ndarray
+        A square matrix where each element (i, j) is the correlation coefficient between the i-th and j-th prediction in the queue.
+    """
     min_length = lng if bool(lng) else len(min(predict_queue, key=len))
     correlation = np.zeros((len(predict_queue), len(predict_queue)), dtype=float)
 
@@ -333,6 +556,21 @@ def correlation_coefficient(predict_queue, lng=None):
 
 
 def double_fault_measure(predict_queue, lng=None):
+    """
+    Calculates the double fault measure for a given queue of predictions.
+
+    Parameters
+    ----------
+    predict_queue : list
+        The list of predictions for which the double fault measure is to be calculated.
+    lng: int, optional
+        The length of the shortest prediction in the queue. If not provided, it is calculated.
+
+    Returns
+    -------
+    double_fault : ndarray
+        A square matrix where each element (i, j) is the double fault measure between the i-th and j-th prediction in the queue.
+    """
     min_length = lng if bool(lng) else len(min(predict_queue, key=len))
     double_fault = np.zeros((len(predict_queue), len(predict_queue)), dtype=float)
 
@@ -350,7 +588,29 @@ def double_fault_measure(predict_queue, lng=None):
 
 # MMR(exact MMR)
 def mmr(len_classifiers, diversity_matrix, accuracy_scores, lmd, to_select):
-    # Calculate MMR scores
+    """
+    Calculates the Maximal Marginal Relevance (MMR) scores for a given set of classifiers.
+
+    Parameters
+    ----------
+    len_classifiers : int
+        The number of classifiers.
+    diversity_matrix : ndarray
+        A square matrix where each element (i, j) is the diversity measure between the i-th and j-th classifier.
+    accuracy_scores : list
+        A list of accuracy scores for each classifier.
+    lmd: float
+        The lambda parameter is used in the MMR calculation. It determines the trade-off between accuracy and diversity.
+    to_select : int
+        The number of classifiers to select.
+
+    Returns
+    -------
+    s: list
+        A list of indices of the selected classifiers.
+    score: float
+        The total MMR score for the selected classifiers.
+    """
     s = []
     score = 0
     while len(s) < to_select:
