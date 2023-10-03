@@ -233,7 +233,7 @@ def window_average(dx, n):
     w_avg = []
     if len(dx) < high_index:
         return [sum(dx) / len(dx)]
-        
+
     while high_index < len(dx):
         w_avg.append(sum(dx[low_index:high_index]) / n)
         low_index += n
@@ -375,27 +375,27 @@ def prun2(list_of_classifiers, lmbd, dt_count, cls_num, diversity_type='q'):
     mmr_score = 0
     accuracy_scores = [classifier.get_aux_accuracy() / 100 for classifier in list_of_classifiers]
     predict_queue = np.array([item.get_total_prediction() for item in list_of_classifiers]).reshape(len(list_of_classifiers), -1)
-    
+
     if diversity_type == 'q':
         q_diversity_matrix = q_measure_updated(predict_queue, dt_count)
         classifier_index, mmr_score = mmr(len(list_of_classifiers), q_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
-        
+
     elif diversity_type == 'kappa':
         kappa_diversity_matrix = kappa_metric(predict_queue, dt_count)
         classifier_index, mmr_score = mmr_score_exact(len(list_of_classifiers), kappa_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
-        
+
     elif diversity_type == 'disagreement':
         disagreement_diversity_matrix = disagreement_measure(predict_queue, dt_count)
         classifier_index, mmr_score = mmr(len(list_of_classifiers), disagreement_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
-        
+
     elif diversity_type == 'correlation':
         correlation_diversity_matrix = correlation_coefficient(predict_queue, dt_count)
         classifier_index, mmr_score = mmr_score_exact(len(list_of_classifiers), correlation_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
-        
+
     elif diversity_type == 'double_fault':
         double_fault_diversity_matrix = double_fault_measure(predict_queue, dt_count)
         classifier_index, mmr_score = mmr(len(list_of_classifiers), double_fault_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
-        
+
     new_list = [list_of_classifiers[i] for i in classifier_index]
     rest = [classifier for classifier in list_of_classifiers if classifier not in new_list]
     return new_list, rest, mmr_score
@@ -534,7 +534,7 @@ def main(fpth, diversity_type):
         aux_cnt += 1
 
         if drifter1.detected_change():
-            
+
             classifier_list += add_classifiers(dt_window=window, cls_num=number_of_classes,
                                                cls_thr=prediction_list_size,
                                                to_add=cls_add_eachstep,
@@ -565,7 +565,7 @@ def main(fpth, diversity_type):
             mmr_score_selected.append(mm_score)
         pbar.update()
     pbar.close()
-    
+
     ddd_acc2 = window_average(stream_record, 1000)
     final_accuracy = f"Name: {fpth}, Overall Mean Accuracy: {np.mean(ddd_acc2)}"
     print(final_accuracy)
@@ -587,4 +587,4 @@ if __name__ == "__main__":
     measure = "double_fault"
 
     main(dataset, measure)
-    
+
