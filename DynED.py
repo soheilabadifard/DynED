@@ -216,7 +216,7 @@ def read_data(pth):
         # change the dtype of the last column of the data frame to int
         data.iloc[:, -1] = data.iloc[:, -1].astype(int)
     else:
-        print("please provide .arff type")
+        print("Please provide .arff type")
         return -1
     return data
 
@@ -374,32 +374,28 @@ def prun2(list_of_classifiers, lmbd, dt_count, cls_num, diversity_type='q'):
     classifier_index = []
     mmr_score = 0
     accuracy_scores = [classifier.get_aux_accuracy() / 100 for classifier in list_of_classifiers]
-    predict_queue = np.array([item.get_total_prediction() for item in list_of_classifiers]).reshape(
-        len(list_of_classifiers), -1)
+    predict_queue = np.array([item.get_total_prediction() for item in list_of_classifiers]).reshape(len(list_of_classifiers), -1)
+    
     if diversity_type == 'q':
         q_diversity_matrix = q_measure_updated(predict_queue, dt_count)
-        classifier_index, mmr_score = mmr(len(list_of_classifiers), q_diversity_matrix, accuracy_scores,
-                                                      lmbd,
-                                                      cls_num + 1)
+        classifier_index, mmr_score = mmr(len(list_of_classifiers), q_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
+        
     elif diversity_type == 'kappa':
         kappa_diversity_matrix = kappa_metric(predict_queue, dt_count)
-        classifier_index, mmr_score = mmr_score_exact(len(list_of_classifiers), kappa_diversity_matrix, accuracy_scores, lmbd,
-                                           cls_num + 1)
+        classifier_index, mmr_score = mmr_score_exact(len(list_of_classifiers), kappa_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
+        
     elif diversity_type == 'disagreement':
         disagreement_diversity_matrix = disagreement_measure(predict_queue, dt_count)
-        classifier_index, mmr_score = mmr(len(list_of_classifiers), disagreement_diversity_matrix, accuracy_scores,
-                                           lmbd,
-                                           cls_num + 1)
+        classifier_index, mmr_score = mmr(len(list_of_classifiers), disagreement_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
+        
     elif diversity_type == 'correlation':
         correlation_diversity_matrix = correlation_coefficient(predict_queue, dt_count)
-        classifier_index, mmr_score = mmr_score_exact(len(list_of_classifiers), correlation_diversity_matrix, accuracy_scores,
-                                           lmbd,
-                                           cls_num + 1)
+        classifier_index, mmr_score = mmr_score_exact(len(list_of_classifiers), correlation_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
+        
     elif diversity_type == 'double_fault':
         double_fault_diversity_matrix = double_fault_measure(predict_queue, dt_count)
-        classifier_index, mmr_score = mmr(len(list_of_classifiers), double_fault_diversity_matrix, accuracy_scores,
-                                           lmbd,
-                                           cls_num + 1)
+        classifier_index, mmr_score = mmr(len(list_of_classifiers), double_fault_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
+        
     new_list = [list_of_classifiers[i] for i in classifier_index]
     rest = [classifier for classifier in list_of_classifiers if classifier not in new_list]
     return new_list, rest, mmr_score
@@ -424,7 +420,7 @@ def add_classifiers(dt_window, cls_num, to_add, cls_thr, classes):
 
 def controller(dt_window, pool_thr, lmbd, cls_pool, smp_q, to_select, clustr, measure_type, slctd_pool=None):
     """
-    this function controls the classifiers behavior and the pool mechanism
+    this function controls the classifier's behavior and the pool mechanism
     :return:
     """
     score = 0
@@ -449,11 +445,11 @@ def controller(dt_window, pool_thr, lmbd, cls_pool, smp_q, to_select, clustr, me
     clusters = {label: [] for label in unique_labels}
     for i, label in enumerate(labels):
         clusters[label].append(i)
-    # Sort inside each cluster by accuracy
+    # Sort inside each cluster by the accuracy
     for cluster in clusters.values():
         cluster.sort(key=lambda j: main_pool[j].get_aux_accuracy(), reverse=True)
 
-    # from each cluster select first 10 and put in new list
+    # From each cluster, select the first 10 and put in a new list
     for cluster in clusters.values():
         first_selection += [main_pool[i] for i in cluster[:10]]
         rest += [main_pool[i] for i in cluster[10:]]
@@ -502,7 +498,7 @@ def main(fpth, diversity_type):
     data_x, data_y = stream.next_sample(initial_sample_train * 5)
     data_y = data_y.reshape(-1, 1)
 
-    # Pre-Train the Classifiers with initial sample size difference
+    # Pre-train the Classifiers with the initial sample size difference
     classifier_list = pre_train_classifier(class_names, data_x, data_y, classifier_list, initial_sample_train)
 
     window = DataWindow(win_size=sliding_window_size, value_of_classes=class_names)
@@ -537,7 +533,7 @@ def main(fpth, diversity_type):
         cnt += 1
         aux_cnt += 1
 
-        if drifter1.detected_change(): 
+        if drifter1.detected_change():
             
             classifier_list += add_classifiers(dt_window=window, cls_num=number_of_classes,
                                                cls_thr=prediction_list_size,
@@ -584,6 +580,7 @@ def main(fpth, diversity_type):
     plt.legend(loc='lower left')
     plt.show()
     plt.close()
+
 
 if __name__ == "__main__":
     dataset = "Put the full address and name of the dataset here"
