@@ -1,3 +1,4 @@
+from matplotlib import pyplot as plt
 from skmultiflow.trees import HoeffdingTreeClassifier
 from skmultiflow.data.data_stream import DataStream
 from skmultiflow.drift_detection import ADWIN
@@ -642,7 +643,7 @@ def prun2(list_of_classifiers, lmbd, dt_count, cls_num, diversity_type='q'):
 
     elif diversity_type == 'kappa':
         kappa_diversity_matrix = kappa_metric(predict_queue, dt_count)
-        classifier_index, mmr_score = mmr_score_exact(len(list_of_classifiers), kappa_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
+        classifier_index, mmr_score = mmr(len(list_of_classifiers), kappa_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
 
     elif diversity_type == 'disagreement':
         disagreement_diversity_matrix = disagreement_measure(predict_queue, dt_count)
@@ -650,7 +651,7 @@ def prun2(list_of_classifiers, lmbd, dt_count, cls_num, diversity_type='q'):
 
     elif diversity_type == 'correlation':
         correlation_diversity_matrix = correlation_coefficient(predict_queue, dt_count)
-        classifier_index, mmr_score = mmr_score_exact(len(list_of_classifiers), correlation_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
+        classifier_index, mmr_score = mmr(len(list_of_classifiers), correlation_diversity_matrix, accuracy_scores, lmbd, cls_num + 1)
 
     elif diversity_type == 'double_fault':
         double_fault_diversity_matrix = double_fault_measure(predict_queue, dt_count)
