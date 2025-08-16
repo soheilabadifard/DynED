@@ -44,7 +44,7 @@ DynED's architecture is built on a three-stage process to construct and maintain
 ## Installation
 
 1.  **Prerequisites**: DynED requires **Python 3.8**.
-2.  **Dependencies**: The core dependency is the `scikit-multiflow` library. The last version of `scikit-multiflow` is compatible with specific versions of Numpy and Pandas. Please follow their official installation instructions.
+2.  **Dependencies**: The core dependency is the `scikit-multiflow` library. The last version of `scikit-multiflow` is compatible with specific versions of Numpy (1.19.5) and Pandas (1.4.4). Please follow their official installation instructions.Additionally, the `tqdm` package is required.
 
     ```bash
     pip install -U scikit-multiflow
